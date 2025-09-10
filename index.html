@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu 💖</title>
+<style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body, html {height:100%; width:100%; font-family:'Comic Sans MS', sans-serif; overflow:hidden;}
+
+    .slide {
+        position: relative;
+        height:100%;
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+        color:white;
+    }
+
+    /* gambar fullscreen */
+    .slide img {
+        position:absolute;
+        top:0; left:0;
+        width:100%;
+        height:100%;
+        object-fit:cover; /* memenuhi layar, proporsional */
+        z-index:0;
+    }
+
+    /* gradient overlay supaya teks terbaca */
+    .overlay {
+        position:absolute;
+        top:0; left:0;
+        width:100%;
+        height:100%;
+        background: linear-gradient(135deg, rgba(255,153,204,0.3), rgba(153,51,255,0.3), rgba(51,153,255,0.3));
+        z-index:1;
+    }
+
+    h1, p {
+        position:relative;
+        z-index:2;
+        text-align:center;
+        text-shadow: 
+            2px 2px 0 #000,
+           -2px 2px 0 #000,
+            2px -2px 0 #000,
+           -2px -2px 0 #000,
+            0 2px 0 #000,
+            2px 0 0 #000,
+            0 -2px 0 #000,
+           -2px 0 0 #000;
+    }
+
+    h1 {font-size:3em; margin-bottom:20px;}
+    p {font-size:2em; max-width:80%;}
+
+    button {
+        position:absolute;
+        bottom:50px;
+        padding:15px 30px;
+        font-size:1.5em;
+        border:none;
+        border-radius:20px;
+        background-color:#ff66b3;
+        color:white;
+        cursor:pointer;
+        z-index:2;
+        transition:0.3s;
+    }
+    button:hover {background-color:#ff3399;}
+</style>
+</head>
+<body>
+    <div class="slide" id="slideContainer">
+        <img id="slideImg" src="Gambar1.webp" alt="Gif Imut">
+        <div class="overlay"></div>
+        <h1 id="title">Hey Kamu 💖</h1>
+        <p id="message">Kamu itu kyowoo banget, bikin aku nggak bisa berhenti mikirinmu 😘</p>
+        <button onclick="nextSlide()">Next 💕</button>
+    </div>
+
+<script>
+    const slides = [
+        {text:"Kamu itu kyowoo banget, bikin aku nggak bisa berhenti mikirinmu 😘", img:"Gambar1.webp"},
+        {text:"Setiap senyummu bikin hariku cerah 🌸", img:"Gambar2.webp"},
+        {text:"Aku pengen selalu bikin kamu bahagia 💖", img:"Gambar3.webp"}
+    ];
+
+    let current = 0;
+    const slideImg = document.getElementById("slideImg");
+    const message = document.getElementById("message");
+
+    function nextSlide(){
+        current++;
+        if(current >= slides.length) current=0;
+        slideImg.src = slides[current].img;
+        message.textContent = slides[current].text;
+    }
+</script>
+</body>
+</html>
